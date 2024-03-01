@@ -40,7 +40,7 @@ public class Bean implements Serializable {
             prov+="7";
             //prov = prov + "7"
             setVisor(prov);
-        }else if(!getVisor().equals("0") || getOp()!==null){
+        }else if(!getVisor().equals("0") || getOp()!=null){
             setVisor("7");
         }
     }//bt07
@@ -63,7 +63,7 @@ public class Bean implements Serializable {
             prov+="8";
             //prov = prov + "8"
             setVisor(prov);
-        }else if(!getVisor().equals("0") || getOp()!==null){
+        }else if(!getVisor().equals("0") || getOp()!=null){
             setVisor("8");
         }
     }//bt08
