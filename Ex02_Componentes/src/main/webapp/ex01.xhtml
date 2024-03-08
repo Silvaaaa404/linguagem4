@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+        <title>Ex02 - Componentes Primefaces</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Formulário Primefaces">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Nome"/>
+                    <p:inputText value="#{ct.cpNome}"/>
+                    <p:outputLabel value="Curso"/>
+                    <p:selectOneMenu value="#{ct.cpCurso}">
+                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                        <f:selectItem itemLabel="Informática" itemValue="Informática"/>
+                        <f:selectItem itemLabel="Química" itemValue="Química"/>
+                        <f:selectItem itemLabel="Secretariado" itemValue="Secretariado"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Sexo"/>
+                    <p:selectOneRadio value="#{ct.cpSexo}">
+                        <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+                        <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+                    </p:selectOneRadio>
+                    <p:outputLabel value="Senha"/>
+                    <p:password feedback="true" toggleMask="true" value="#{ct.cpSenha}"
+                                promptLabel="letras, com números e caracteres especiais"
+                                weakLabel="Fraca" goodLabel="Boa" strongLabel="Forte"
+                                redisplay="true"/>
+                    <p:outputLabel value="Deseja Receber Informações?"/>
+                    <p:selectBooleanCheckbox value="#{ct.cpInfo}"/>
+                    <h:panelGrid columns="3">
+                        <p:link outcome="index" value="Voltar"/>
+                        <p:commandButton action="#{ct.btLimpar(a)}" update="@form" value="Limpar" 
+                                         styleClass="ui-button-danger"/>
+                        <p:commandButton action="#{ct.btCadastrar(a)}" update="@form" value="Cadastrar"/>
+                    </h:panelGrid>
+                    
+                </h:panelGrid>
+            </p:panel>
+                
+        </h:form>
+    </h:body>
+</html>
