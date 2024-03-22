@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+        <title>Sistema Orçamentos</title>
+        <h:outputStylesheet name="estilos.css" library="css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:card class="caixa">
+                <f:facet name="title">
+                    Sistema Orçamentos de Serviços
+                </f:facet>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-lg-4">
+                        <p:outputLabel value="Nome"/>
+                        <p:inputText class="total"/>
+                    </div>
+                    <div class="ui-g-12 ui-lg-2">
+                        <p:outputLabel value="CPF/CNPJ"/>
+                        <p:inputText class="total"/>
+                    </div>
+                    <div class="ui-g-12 ui-lg-4">
+                        <p:outputLabel value="Serviços"/>
+                        <p:selectOneMenu class="total">
+                            <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                            <f:selectItem itemLabel="Limpeza do aparelho" itemValue="Limpeza do aparelho"/>
+                            <f:selectItem itemLabel="Troca de peça" itemValue="Troca de peça"/>
+                            <f:selectItem itemLabel="Configurações" itemValue="Configurações"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="ui-g-12 ui-lg-2">
+                        <br/>
+                        <p:commandButton value="Adicionar" styleClass="total ui-button-success"/>
+                    </div>
+                </div>
+                <p:dataTable value="" showGridlines="true" size="small" paginator="true">
+                    <p:column headerText="#" width="20" responsivePriority="1">
+                        <h:outputText value="01"/>
+                    </p:column>
+                    <p:column headerText="Serviço" responsivePriority="2">
+                        <h:outputText value="Limpeza do aparelho"/>
+                    </p:column>
+                    <p:column headerText="Valor" width="160" responsivePriority="3">
+                        <h:outputText value="R$ 100,00"/>
+                    </p:column>
+                    <p:column width="40" responsivePriority="4">
+                        <p:commandButton icon="pi pi-times" styleClass="rounded-button ui-button-danger"/>
+                    </p:column>
+                </p:dataTable>
+            </p:card>
+        </h:form>
+    </h:body>
+</html>

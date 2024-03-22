@@ -1,0 +1,12 @@
+body{
+    background-color: darkcyan;
+}
+
+.caixa{
+    width: 80%;
+    margin: 0 auto;
+}
+
+div .total{
+    width: 100%;
+}
