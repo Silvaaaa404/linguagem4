@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema Gerenciamento de Conta de Energia</title>
+    </h:head>
+    <h:body style="background: #eae6e6">
+        <h:form>
+            <p:card style="width: 80%; margin: 0 auto">
+                <f:facet name="title">
+                    Sistema Gerenciamento de Conta de Energia
+                </f:facet>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-lg-4">
+                        <p:outputLabel value="Equipamento"/>
+                        <p:inputText value="#{ct.cpNom}" placeholder="Nome do equipamento..." style="width: 100%"/>
+                    </div>
+                    <div class="ui-g-12 ui-lg-2">
+                        <p:outputLabel value="Potência(Watt)"/>
+                        <p:inputText value="#{ct.cpPot}" type="number" style="width: 100%"/>
+                    </div>
+                     <div class="ui-g-12 ui-lg-2">
+                        <p:outputLabel value="Tempo"/>
+                        <p:inputText value="#{ct.cpTmp}" type="number" style="width: 100%"/>
+                    </div>
+                    <div class="ui-g-12 ui-lg-2">
+                        <p:outputLabel value="Unidade"/>
+                        <p:selectOneMenu value="#{ct.cpMed}" style="width: 100%">
+                                <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                                <f:selectItem itemLabel="Hora" itemValue="Hora"/>
+                                <f:selectItem itemLabel="Minuto" itemValue="Minuto"/>
+                        </p:selectOneMenu>    
+                    </div>
+                       <div class="ui-g-12 ui-lg-2">
+                            <br/>
+                            <p:commandButton update="@form" action="#{ct.btSalvar(ae)}" style="width: 100%" value="Salvar" styleClass="ui-button-success"/>
+                        </div>
+                </div>
+                <p:dataTable value="#{ct.dadosTabela}" var="rs" showGridlines="true">
+                    <p:column headerText="#">
+                        <p:outputLabel value="#{rs.pos}"/>
+                    </p:column>
+                     <p:column headerText="Equipamento">
+                        <p:outputLabel value="#{rs.nomeEq}"/>
+                    </p:column>
+                    <p:column headerText="Potência">
+                        <p:outputLabel value="#{rs.pot}"/>
+                    </p:column>
+                    <p:column headerText="Tempo">
+                        <p:outputLabel value="#{rs.tempo} #{rs.med}">
+                            <f:convertNumber pattern="#.00"/>
+                        </p:outputLabel>
+                    </p:column>
+                    <p:column headerText="kW/h">
+                        <p:outputLabel value="#{rs.kwh}"/>
+                    </p:column>
+                    <p:column headerText="Total">
+                        <p:outputLabel value="#{rs.reais}">
+                            <f:convertNumber pattern="R$ #.00"/>
+                        </p:outputLabel>
+                    </p:column>
+                    <p:column>
+                        <p:commandLink action="#{ct.btAlterar(ae)}" update="@form" value="alterar"/>
+                    </p:column>
+                    <p:column>
+                        <p:commandLink action="#{ct.btRemover(ae)}" update="@form" value="excluir"/>
+                    </p:column>
+                </p:dataTable>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-lg-6">
+                        <p:outputLabel value="Total"  />
+                        <p:inputText value="#{ct.cptot}" disabled="true" style="width: 100%" />
+                    </div>
+                    <div class="ui-g-12 ui-lg-6">
+                        <p:outputLabel value="Informe valor kW/h" />
+                        <p:inputText value="#{ct.cpVal}" type="number" style="width: 100%"/>
+                    </div>
+                </div>
+            </p:card>
+        </h:form>
+    </h:body>
+</html>
